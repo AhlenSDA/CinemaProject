@@ -74,14 +74,14 @@ public class MovieDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         List<Movie> movies = null;
-        try{
+        try {
             tx = session.beginTransaction();
             movies = session.createQuery("FROM Movie").list();
             tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
 
